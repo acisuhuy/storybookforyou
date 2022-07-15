@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flip card</title>
+    <link rel="icon" type="image/x-icon" href="asset/asset-1.jpeg">
+    <link rel="stylesheet" href="style.css">
+    <!-- type script -->
+    <script src="https://unpkg.com/typeit@8.6.6/dist/index.umd.js"></script>
+</head>
+<body>
+    
+
+    <div class="book">
+        <input type="checkbox" id="c1">
+        <input type="checkbox" id="c2">
+        <input type="checkbox" id="c3">
+        <div id="cover">
+            <img src="asset/asset-3.jpg"  alt="">
+        </div>
+        <div class="flip-book">
+            <div class="flip" id="p1">
+                <div class="back">
+                    <img src="asset/asset-1.jpeg"  alt="">
+                    <label  for="c1" class="back-btn">Before</label>
+                </div>
+                <div class="front">
+                    <h2>Coba Klik Tombol Play</h2>
+                    <p id="element"></p>
+                    <button class="btn btn-primary" onclick="toggleMusic()" id="btn-playback" data-play="false">
+                        <i class="fa fa-play"></i>
+                        <span id="btn-text">PLAY</span>
+                        <audio id="audio" src="asset/Jarryd James - 1000x (Official Audio) ft. Broods.mp3" />
+                    </button>
+                    <label for="c1" class="next-btn">NEXT</label>
+                </div>
+            </div>
+
+            <div class="flip" id="p2">
+                <div class="back">
+                    <img src="asset/13055.jpg" alt="">
+                    <label for="c2" class="back-btn">Before</label>
+                </div>
+                <div class="front">
+                    <h2>Itis 🤍</h2>
+                    <p id="element-2"></p>
+                    <label for="c2" class="next-btn">NEXT</label>
+                </div>
+            </div>
+            
+            <div class="flip" id="p3">
+                <div class="back">
+                    <label for="c3" class="back-btn">Before</label>
+                </div>
+                <div class="front">
+                    <h2>Sayang</h2>
+                    <p id="element-3"></p>
+                    <label for="c3" class="next-btn">NEXT</label>
+                </div>
+            </div>
+
+            
+
+        </div>
+    </div>
+   <script>
+    // Audio
+        const myAudio = document.getElementById("audio");
+    const btn = document.getElementById("btn-playback");
+    const btnIcon = document.querySelector("#btn-playback > i");
+    const btnText = document.getElementById("btn-text");
+    
+    const toggleMusic = () => {      
+      const dataPlay = btn.getAttribute('data-play');
+            
+      if(dataPlay === 'false') {
+        btn.setAttribute('data-play', 'true');
+        myAudio.play();
+        btnIcon.classList.remove("fa-play");
+        btnIcon.classList.add("fa-pause");
+        btnText.innerText = "PAUSE";
+      } else {
+        btn.setAttribute('data-play', 'false');
+        myAudio.pause();
+        btnIcon.classList.remove("fa-pause");
+        btnIcon.classList.add("fa-play");
+        btnText.innerText = "PLAY";
+      }
+    };
+    
+    myAudio.onpause = () => {
+      btn.setAttribute('data-play', 'false');
+        myAudio.pause();
+        btnIcon.classList.remove("fa-pause");
+        btnIcon.classList.add("fa-play");
+        btnText.innerText = "PLAY";
+    }; 
+    // text script
+
+            new TypeIt("#element", {
+        strings: "Kalo udah dengerin sambil baca Surat ini 😙",
+        speed: 75,
+        loop: true,
+        }).go();
+
+        new TypeIt("#element-2", {
+        strings: "Hallo Sayang... ini aku buat surat buat kamu baca ya sampai akhir. aku cuman mau bilang kalo kamu adalah hal yang luarbiasa yang ga pernah aku duga yang datang dikehidupan aku ",
+        speed: 90,
+        loop: true,
+        }).go();
+        
+        new TypeIt("#element-3", {
+        strings: "Kayaknya segitu aja kali ya.. pokoknya aku sayang kamu jangan sedih-sedih kalo kita ldr yaa jaga kesehatan jangan lupa Mam I LOVE U 1000x By Zaky si ganteng ",
+        speed: 150,
+        loop: true,
+        }).go();
+   </script>
+</body>
+</html>
